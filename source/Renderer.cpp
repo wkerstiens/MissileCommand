@@ -42,7 +42,7 @@ Renderer::~Renderer() {
     SDL_Quit();
 }
 
-void Renderer::Render(std::vector<std::unique_ptr<City>> &cities) {
+void Renderer::Render(std::vector<std::unique_ptr<City>> &cities, std::vector<std::unique_ptr<LaserCannon>> &laserCannons) {
     // Clear Screen
     SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
     SDL_RenderClear(sdl_renderer);
@@ -51,7 +51,8 @@ void Renderer::Render(std::vector<std::unique_ptr<City>> &cities) {
     // RENDER STUFF GOES HERE
     // Async here cause some screen flicker
     DrawGround();
-    RenderCities(cities);
+    Render(cities);
+    Render(laserCannons);
 
     // Update Screen
     SDL_RenderPresent(sdl_renderer);
@@ -67,11 +68,11 @@ void Renderer::printStatus() {
     std::cout << "Renderer is running\n";
 }
 
-void Renderer::RenderCities(std::vector<std::unique_ptr<City>> &cities) {
-    for ( auto &city : cities) {
-        city->Render(sdl_renderer);
+template <class T>
+void Renderer::Render(std::vector<std::unique_ptr<T>> &drawables) {
+    for ( auto &drawable : drawables) {
+        drawable->Render(sdl_renderer);
     }
-
 }
 
 void Renderer::DrawGround() {

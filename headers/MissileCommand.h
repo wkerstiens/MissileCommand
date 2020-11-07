@@ -7,6 +7,7 @@
 #include "Keyboard.h"
 #include "Renderer.h"
 #include "City.h"
+#include "LaserCannon.h"
 
 #ifndef MISSILECOMMAND_MISSILECOMMAND_H
 #define MISSILECOMMAND_MISSILECOMMAND_H
@@ -31,6 +32,7 @@ private:
     std::mutex mtxRunning;
 
     std::vector<std::unique_ptr<City>> cities {};
+    std::vector<std::unique_ptr<LaserCannon>> laserCannons {};
 
     void HandleInput();
     void Update();

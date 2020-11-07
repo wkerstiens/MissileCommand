@@ -6,7 +6,7 @@
 #ifndef MISSILECOMMAND_CITY_H
 #define MISSILECOMMAND_CITY_H
 
-enum CITY_STATUS {
+enum class CITY_STATUS {
     INTACT,
     DESTROYED
 };

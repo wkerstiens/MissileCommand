@@ -18,10 +18,16 @@ MissileCommand::MissileCommand(std::size_t width, std::size_t height, std::size_
     cities.push_back(std::make_unique<City>(370, 580, 50, 30));
     cities.push_back(std::make_unique<City>(440, 580, 50, 30));
     cities.push_back(std::make_unique<City>(510, 580, 50, 30));
+
+    laserCannons.push_back(std::make_unique<LaserCannon>(20, 550, 20, 30));
+    laserCannons.push_back(std::make_unique<LaserCannon>(310, 550, 20, 30));
+    laserCannons.push_back(std::make_unique<LaserCannon>(600, 550, 20, 30));
+
     Running(true);
     std::lock_guard<std::mutex> lock(_mtxCout);
     std::cout << "Missile Command instantiated. \n";
 }
+
 
 void MissileCommand::Run() {
     Uint32 title_timestamp = SDL_GetTicks();
@@ -36,7 +42,7 @@ void MissileCommand::Run() {
         // input, update, render
         HandleInput();
         Update();
-        renderer->Render(cities);
+        renderer->Render(cities, laserCannons);
 
         frame_end = SDL_GetTicks();
 

@@ -9,8 +9,8 @@
 
 class Drawable : public GameComponent {
 public:
-protected:
     virtual void Render(SDL_Renderer *renderer) = 0;
+protected:
 private:
 };
 

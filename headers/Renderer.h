@@ -4,6 +4,7 @@
 #include <memory>
 #include "SDL.h"
 #include "City.h"
+#include "LaserCannon.h"
 
 #ifndef MISSILECOMMAND_RENDERER_H
 #define MISSILECOMMAND_RENDERER_H
@@ -14,7 +15,7 @@ public:
     Renderer(const std::size_t screen_width, const std::size_t screen_height);
     ~Renderer();
 
-    void Render(std::vector<std::unique_ptr<City>> &cities);
+    void Render(std::vector<std::unique_ptr<City>> &cities, std::vector<std::unique_ptr<LaserCannon>> &laserCannons);
     void SetTitle(int fps);
 
     void printStatus() override;
@@ -25,7 +26,8 @@ private:
     const std::size_t _screen_width;
     const std::size_t _screen_height;
 
-    void RenderCities(std::vector<std::unique_ptr<City>> &cities);
+    template <class T>
+    void Render(std::vector<std::unique_ptr<T>> &drawables);
     void DrawGround();
 };
 

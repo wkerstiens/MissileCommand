@@ -4,7 +4,7 @@
 
 #include "City.h"
 
-City::City(int x, int y, int w, int h) : _x(x), _y(y), _width(w), _height(h), _status(INTACT) {
+City::City(int x, int y, int w, int h) : _x(x), _y(y), _width(w), _height(h), _status(CITY_STATUS::INTACT) {
 
 }
 
@@ -20,7 +20,7 @@ void City::Status(CITY_STATUS status) {
 
 void City::Render(SDL_Renderer *renderer) {
     SDL_Rect block;
-    if(_status == DESTROYED ) SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0x00, 0X20);
+    if(_status == CITY_STATUS::DESTROYED ) SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0x00, 0X20);
     else SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0xff, 0xFF);
     block.x = _x;
     block.y = _y;
