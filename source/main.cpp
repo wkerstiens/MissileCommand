@@ -1,6 +1,20 @@
 #include <iostream>
+#include <thread>
+#include "MissileCommand.h"
+
+#include "SDL.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    constexpr std::size_t screen_width{640};
+    constexpr std::size_t screen_height{640};
+    constexpr std::size_t framesPerSecond{30};
+    constexpr std::size_t msPerFrame{ 1000 / framesPerSecond };
+
+    std::cout << "Welcome to Missile Command.\n";
+    MissileCommand missileCommand(screen_width, screen_height, msPerFrame);
+    missileCommand.Run();
+    std::cout << "Thanks for playing Missile Command.\n";
+
+
     return 0;
 }
