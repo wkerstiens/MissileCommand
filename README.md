@@ -21,9 +21,9 @@ your cities are destroyed the game is over.
 
 Use your mouse pointer to aim and the following keys to fire.
 
-A - Fires left cannon
-S - Fires middle cannon
-D - Fires right cannon
+A - Fires left cannon  
+S - Fires middle cannon  
+D - Fires right cannon  
 
 ------
 
