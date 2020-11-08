@@ -4,14 +4,14 @@
 
 #include "GameComponent.h"
 
-#ifndef MISSILECOMMAND_KEYBOARD_H
-#define MISSILECOMMAND_KEYBOARD_H
+#ifndef MISSILECOMMAND_EVENTHANDLER_H
+#define MISSILECOMMAND_EVENTHANDLER_H
 
-class Keyboard : public GameComponent {
+class EventHandler : public GameComponent {
 public:
     void HandleInput(bool &&running) const;
     void printStatus() override;
 private:
 };
 
-#endif //MISSILECOMMAND_KEYBOARD_H
+#endif //MISSILECOMMAND_EVENTHANDLER_H

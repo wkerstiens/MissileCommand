@@ -4,14 +4,14 @@
 #include <mutex>
 #include <iostream>
 #include "MissileCommand.h"
-#include "Keyboard.h"
+#include "EventHandler.h"
 #include "Renderer.h"
 #include "SDL.h"
 
 MissileCommand::MissileCommand(std::size_t width, std::size_t height, std::size_t target_frame_duration)
         : _width(width), _height(height), _target_frame_duration(target_frame_duration) {
     renderer = std::make_unique<Renderer>(_width, _height);
-    keyboard = std::make_unique<Keyboard>();
+    eventHandler = std::make_unique<EventHandler>();
     cities.push_back(std::make_unique<City>(80, 580, 50, 30));
     cities.push_back(std::make_unique<City>(150, 580, 50, 30));
     cities.push_back(std::make_unique<City>(220, 580, 50, 30));
@@ -85,7 +85,7 @@ bool MissileCommand::Running() {
 }
 
 void MissileCommand::HandleInput() {
-    keyboard->HandleInput(std::move(_running));
+    eventHandler->HandleInput(std::move(_running));
 }
 
 void MissileCommand::Update() {
@@ -96,6 +96,6 @@ void MissileCommand::printStatus()  {
     std::unique_lock<std::mutex> lock(_mtxCout);
     std::cout << "Missile command is running\n";
     lock.unlock();
-    keyboard->printStatus();
+    eventHandler->printStatus();
     renderer->printStatus();
 }

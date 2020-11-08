@@ -3,9 +3,9 @@
 //
 #include <iostream>
 #include "SDL.h"
-#include "Keyboard.h"
+#include "EventHandler.h"
 
-void Keyboard::HandleInput(bool &&running) const {
+void EventHandler::HandleInput(bool &&running) const {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
         if (e.type == SDL_QUIT) {
@@ -17,11 +17,15 @@ void Keyboard::HandleInput(bool &&running) const {
                     running = false;
                     break;
             }
+        } else if (e.type == SDL_MOUSEBUTTONUP) {
+            if(e.button.button == SDL_BUTTON_LEFT) {
+                std::cout << e.button.x << ", " << e.button.y << "\n";
+            }
         }
     }
 }
 
-void Keyboard::printStatus() {
+void EventHandler::printStatus() {
     std::unique_lock<std::mutex> lock(_mtxCout);
     std::cout << "Keyboard is running\n";
 }
