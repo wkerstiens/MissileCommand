@@ -7,10 +7,12 @@
 #define MISSILECOMMAND_LASERCANNON_H
 
 enum class LASER_CANNON_STATUS {
-    READY,
-    DESTROYED,
     RECHARGING,
-    FIRING
+    READY,
+    FIRING,
+    EXPLODING,
+    DESTROYED
+
 };
 
 
@@ -19,6 +21,12 @@ public:
     LaserCannon(int x, int y, int w, int h);
     void Render(SDL_Renderer *renderer) override;
     void printStatus() override;
+    void Update() override;
+
+    int TargetX();
+    void TargetX( int x);
+    int TargetY();
+    void TargetY( int y);
 
     LASER_CANNON_STATUS Status();
     void Status(LASER_CANNON_STATUS status);
@@ -31,7 +39,13 @@ private:
     int _width{0};
     int _height {0};
 
+    int _targetX {0};
+    int _targetY {0};
+    int _centerOfCannon;
 
+    float _currentX;
+    float _currentY;
+    float _radius;
 };
 
 

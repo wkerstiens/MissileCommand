@@ -32,3 +32,7 @@ void City::Render(SDL_Renderer *renderer) {
 void City::printStatus() {
 
 }
+
+void City::Update() {
+
+}

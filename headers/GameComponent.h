@@ -10,8 +10,6 @@ class GameComponent {
 public:
     virtual void printStatus() = 0;
 protected:
-
-
     std::mutex _mtxCout;
 private:
 };

@@ -85,11 +85,13 @@ bool MissileCommand::Running() {
 }
 
 void MissileCommand::HandleInput() {
-    eventHandler->HandleInput(std::move(_running));
+    eventHandler->HandleInput(std::move(_running), laserCannons);
 }
 
 void MissileCommand::Update() {
-
+    for( auto &lc : laserCannons) {
+        lc->Update();
+    }
 }
 
 void MissileCommand::printStatus()  {

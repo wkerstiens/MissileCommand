@@ -16,6 +16,7 @@ public:
     City(int x, int y, int w, int h);
     void Render(SDL_Renderer *renderer) override;
     void printStatus() override;
+    void Update() override;
 
     CITY_STATUS Status();
     void Status(CITY_STATUS status);
